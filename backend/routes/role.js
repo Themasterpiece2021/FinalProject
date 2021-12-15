@@ -11,4 +11,4 @@ router.get("/findRole/:_id", auth, validId, admin, role.findRole);
 router.put("/updateRole", auth, admin, role.updateRole);
 router.delete("/deleteRole/:_id", auth, validId, admin, role.deleteRole);
 
-export default router;
+export default role;

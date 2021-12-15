@@ -13,4 +13,4 @@ router.get("/listTask", auth, task.listTask);
 router.put("/updateTask", auth, task.updateTask);
 router.delete("/deleteTask/:_id", auth, validId, task.deleteTask);
 
-export default router;
+export default task;
