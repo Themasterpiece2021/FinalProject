@@ -7,7 +7,7 @@ const saveList = async (req, res) => {
   if (!req.body.name)
     return res.status(400).send({ message: "Incomplete data" });
 
-  const listSchema = new board({
+  const listSchema = new list({
     proyectId: req.proyect._id,
     name: req.body.name,
   });
