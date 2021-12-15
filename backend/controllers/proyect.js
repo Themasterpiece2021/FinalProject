@@ -1,5 +1,6 @@
 import proyect from "../models/proyect.js";
 
+
 const saveProyect = async (req, res) => {
     if (!req.body.name || !req.body.description)
       return res.status(400).send({ message: "Incomplete data" });
@@ -58,3 +59,4 @@ const saveProyect = async (req, res) => {
   };
   
   export default {saveProyect, listProyectAdmin, listProyectColab, updateProyect, deleteProyect }
+

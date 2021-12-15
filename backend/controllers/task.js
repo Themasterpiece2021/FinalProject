@@ -1,4 +1,4 @@
-import board from "../models/board.js";
+import task from "../models/task.js";
 import fs from "fs";
 import path from "path";
 import moment from "moment";
@@ -7,15 +7,16 @@ const saveTask = async (req, res) => {
   if (!req.body.name || !req.body.description)
     return res.status(400).send({ message: "Incomplete data" });
 
-  const boardSchema = new board({
-    userId: req.user._id,
+  const taskSchema = new task({
     name: req.body.name,
     description: req.body.description,
     taskStatus: "to-do",
     imageUrl: "",
+    userId: req.user._id,
+    listId: req.list._id,
   });
 
-  const result = await boardSchema.save();
+  const result = await taskSchema.save();
   return !result
     ? res.status(400).send({ message: "Error registering task" })
     : res.status(200).send({ result });
@@ -46,22 +47,23 @@ const saveTaskImg = async (req, res) => {
     }
   }
 
-  const boardSchema = new board({
-    userId: req.user._id,
+  const taskSchema = new task({
     name: req.body.name,
     description: req.body.description,
     taskStatus: "to-do",
     imageUrl: imageUrl,
+    userId: req.user._id,
+    listId: req.list._id,
   });
 
-  const result = await boardSchema.save();
+  const result = await taskSchema.save();
   if (!result)
     return res.status(400).send({ message: "Error registering task" });
   return res.status(200).send({ result });
 };
 
 const listTask = async (req, res) => {
-  const taskList = await board.find({ userId: req.user._id });
+  const taskList = await task.find({ userId: req.user._id });
   return taskList.length === 0
     ? res.status(400).send({ message: "You have no assigned tasks" })
     : res.status(200).send({ taskList });
@@ -71,7 +73,7 @@ const updateTask = async (req, res) => {
   if (!req.body._id || !req.body.taskStatus)
     return res.status(400).send({ message: "Incomplete data" });
 
-  const taskUpdate = await board.findByIdAndUpdate(req.body._id, {
+  const taskUpdate = await task.findByIdAndUpdate(req.body._id, {
     taskStatus: req.body.taskStatus,
   });
 
@@ -81,7 +83,7 @@ const updateTask = async (req, res) => {
 };
 
 const deleteTask = async (req, res) => {
-  let taskImg = await board.findById({ _id: req.params["_id"] });
+  let taskImg = await task.findById({ _id: req.params["_id"] });
   let serverImg= '';
   
 
@@ -91,7 +93,7 @@ const deleteTask = async (req, res) => {
   serverImg = "./uploads/" + taskImg;
   
   
-  const taskDelete = await board.findByIdAndDelete({ _id: req.params["_id"] });
+  const taskDelete = await task.findByIdAndDelete({ _id: req.params["_id"] });
   if (!taskDelete) return res.status(400).send({ message: "Task not found" });
 
   try {
