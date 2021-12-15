@@ -7,10 +7,10 @@ import multiparty from "connect-multiparty";
 const mult = multiparty();
 const router = express.Router();
 
-router.post("/saveTask", auth, task.saveTask);
-router.post("/saveTaskImg", mult, formatFile, auth, task.saveTaskImg);
-router.get("/listTask", auth, task.listTask);
-router.put("/updateTask", auth, task.updateTask);
-router.delete("/deleteTask/:_id", auth, validId, task.deleteTask);
+router.post("/saveTask", task.saveTask);
+router.post("/saveTaskImg", mult, formatFile, task.saveTaskImg);
+router.get("/listTask",  task.listTask);
+router.put("/updateTask", task.updateTask);
+router.delete("/deleteTask/:_id", task.deleteTask);
 
-export default task;
+export default router;

@@ -8,8 +8,8 @@ const mult = multiparty();
 const router = express.Router();
 
 router.post("/saveList",  list.saveList);
-router.get("/listList",  list.listlist);
+router.get("/listList",  list.listList);
 router.put("/updatelist",  list.updateList);
-router.delete("/deletelist/:_id",  validId, list.deletelist);
+router.delete("/deletelist/:_id",  validId, list.deleteList);
 
-export default list;
+export default router;
