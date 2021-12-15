@@ -7,8 +7,8 @@ import multiparty from "connect-multiparty";
 const mult = multiparty();
 const router = express.Router();
 
-router.post("/saveList",  list.saveList);
-router.get("/listList",  list.listList);
+router.post("/saveList/:_id",  list.saveList);
+router.get("/listList/:_id",  list.listList);
 router.put("/updatelist",  list.updateList);
 router.delete("/deletelist/:_id",  validId, list.deleteList);
 
