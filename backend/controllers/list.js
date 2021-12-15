@@ -8,7 +8,7 @@ const saveList = async (req, res) => {
     return res.status(400).send({ message: "Incomplete data" });
 
   const listSchema = new list({
-    proyectId: req.proyect._id,
+    proyectId: req.body._id,
     name: req.body.name,
   });
 
@@ -37,7 +37,7 @@ const updateList = async (req, res) => {
   };
 
   const deleteList = async (req, res) => {
-    const listDelete = await list.deleteMany(req.params['_id'])
+    const listDelete = await list.deleteMany({proyectId: req.params['_id']})
     return !listDelete
       ? res.status(400).send({ message: "List no found" })
       : res.status(200).send({ message: "List deleted" });
