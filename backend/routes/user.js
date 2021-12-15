@@ -14,4 +14,4 @@ router.get("/findUser/:_id", auth, validId, admin, user.findUser);
 router.put("/updateUser", auth, admin, user.updateUser);
 router.put("/deleteUser", auth, admin, user.deleteUser);
 
-export default router;
+export default user;
