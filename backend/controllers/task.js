@@ -12,7 +12,6 @@ const saveTask = async (req, res) => {
     description: req.body.description,
     taskStatus: "to-do",
     imageUrl: "",
-    userId: req.user._id,
     listId: req.list._id,
   });
 
@@ -52,7 +51,6 @@ const saveTaskImg = async (req, res) => {
     description: req.body.description,
     taskStatus: "to-do",
     imageUrl: imageUrl,
-    userId: req.user._id,
     listId: req.list._id,
   });
 
