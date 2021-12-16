@@ -1,0 +1,27 @@
+.headerSpacer{
+    flex: 1 1 auto;
+}
+.navbar{
+    background-color: #1031a7;
+}
+.navbar-brand{
+    font-size: 22px;
+}
+
+.nosotros{
+    background-color: #2d71ea;
+    color: #ffffff;
+    text-align: justify;
+}
+.nosotros2{
+    background-color: #1031a7;
+    color: #ffffff;
+}
+.footer{
+    display:flex;
+    justify-content: space-around;
+}
+.dropdown-item:hover{
+    background-color: #1031a7;
+    font-size: 18px;
+}
