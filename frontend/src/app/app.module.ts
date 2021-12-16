@@ -22,6 +22,15 @@ import { UpdateUserComponent } from './components/user/update-user/update-user.c
 import { LandingComponent } from './home/landing/landing/landing.component';
 import { LayoutComponent } from './home/dashboard/layout/layout.component';
 
+
+import {ListService} from './services/list.service';
+import {ProyectsService} from './services/proyects.service';
+import {RoleService} from './services/role.service';
+import {TaskService} from './services/task.service';
+import {UserService} from './services/user.service';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +57,18 @@ import { LayoutComponent } from './home/dashboard/layout/layout.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    ListService,
+    ProyectsService,
+    RoleService,
+    TaskService,
+    UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
