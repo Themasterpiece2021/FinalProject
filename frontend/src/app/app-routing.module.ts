@@ -7,7 +7,6 @@ import { LandingComponent } from './home/landing/landing/landing.component';
 import { RegisterComponent } from './home/register/register.component';
 
 const routes: Routes = [
-  { path: '**', component: LandingComponent },
   { path: '', component: LandingComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
