@@ -1,1 +1,50 @@
-<p>login works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6 vh-100">
+      <div class="row"><a routerLink=""><i class="fas fa-arrow-left h2 m-1" ></i></a></div>
+      <div class="title">
+        <h2><b>Master</b>Board</h2>
+      </div>
+    </div>
+    <div class="col-6 login vh-100">
+      <div class="container vh-100">
+        <div class="row vh-100">
+          <div class="col-12 loginForm">
+            <form class="text-white">
+              <div class="form-group m-4">
+                <label for="exampleInputEmail1">Email</label>
+                <input
+                  [(ngModel)]="loginData.email"
+                  [ngModelOptions]="{standalone: true}"
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter email"
+                />
+              </div>
+              <div class="form-group m-4">
+                <label for="exampleInputPassword1">Password</label>
+                <input
+                  [(ngModel)]="loginData.password"
+                  [ngModelOptions]="{standalone: true}"
+                  type="password"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                  placeholder="Password"
+                />
+              </div>
+              <button
+                (click)="login()"
+                type="submit"
+                class="btn btn-primary m-4"
+              >
+                Enviar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
