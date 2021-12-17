@@ -28,8 +28,10 @@ import {ProyectsService} from './services/proyects.service';
 import {RoleService} from './services/role.service';
 import {TaskService} from './services/task.service';
 import {UserService} from './services/user.service';
+
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     ListService,
