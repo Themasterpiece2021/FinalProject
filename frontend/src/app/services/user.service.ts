@@ -14,4 +14,12 @@ export class UserService {
   login(user: any) {
     return this._http.post<any>(this.env + 'user/login', user);
   }
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
+  registerUser(user: any) {
+    return this._http.post<any>(this.env + 'user/registerUser', user);
+  }
 }
