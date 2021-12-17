@@ -21,6 +21,7 @@ import { ListUserComponent } from './components/user/list-user/list-user.compone
 import { UpdateUserComponent } from './components/user/update-user/update-user.component';
 import { LandingComponent } from './home/landing/landing/landing.component';
 import { LayoutComponent } from './home/dashboard/layout/layout.component';
+import { HomeComponent } from './home/dashboard/home/home.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { LayoutComponent } from './home/dashboard/layout/layout.component';
     UpdateUserComponent,
     LandingComponent,
     LayoutComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
