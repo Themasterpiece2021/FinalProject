@@ -1,51 +1,35 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-4">
-      <div
-        class="offcanvas offcanvas-start"
-        data-bs-scroll="true"
-        data-bs-backdrop="false"
-        tabindex="-1"
-        id="offcanvasScrolling"
-        aria-labelledby="offcanvasScrollingLabel"
-      >
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasScrollingLabel">
-            Colored with scrolling
-          </h5>
-          <button
-            type="button"
-            class="btn-close text-reset"
-            data-bs-dismiss="offcanvas"
-            aria-label="Close"
-          ></button>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-1 navBar vh-100">
+          <ul class="nav flex-column">
+            <li class="nav-item p-3">
+              <img src="../../../../assets/MasterB-08.png" alt="" width="65px" align="center"
+              data-toggle="tooltip" data-placement="right" title="MasterBoard"
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="listProyect"><i class="fas fa-folder "
+                data-toggle="tooltip" data-placement="right" title="Mis Proyectos"
+                ></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="listProyectColab"><i class="fas fa-share-alt"
+                data-toggle="tooltip" data-placement="right" title="Proyectos compartidos"
+                ></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " routerLink="listProyect"><i class="fas fa-cog"
+                data-toggle="tooltip" data-placement="right" title="Configuracion"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " routerLink="listProyect"><i class="fas fa-sign-out-alt"
+                data-toggle="tooltip" data-placement="right" title="Salir"></i></a>
+            </li>
+          </ul>
         </div>
-        <div class="offcanvas-body">
-          <p>
-            Try scrolling the rest of the page to see this option in action.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-8">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 botonTrigger">
-            <button
-              class="btn btn-primary"
-              type="button"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasScrolling"
-              aria-controls="offcanvasScrolling"
-            >
-            <i class="far fa-align-justify"></i>
-            </button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12"></div>
+        <div class="col-11">
+          <router-outlet></router-outlet>
         </div>
       </div>
     </div>
-  </div>
-</div>

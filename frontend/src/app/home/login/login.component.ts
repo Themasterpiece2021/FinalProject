@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       this._userService.login(this.loginData).subscribe({
         next: (v) => {
           localStorage.setItem('token', v.token);
-          this._router.navigate(['/dashboard']);
+          this._router.navigate(['/dashboard/listProyect']);
         },
         error: (e) => {
           console.log(e);

@@ -1,1 +1,9 @@
-<p>list-list works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+          <mat-tab-group >
+            <mat-tab *ngFor="let list of listData" label="{{list.name}}" ><router-outlet></router-outlet> </mat-tab>
+          </mat-tab-group>
+        </div>
+    </div>
+</div>
