@@ -35,6 +35,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import {MatTabsModule} from '@angular/material/tabs'
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -43,6 +44,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
+
+import { ListProyectColabComponent } from './components/proyect/list-proyect-colab/list-proyect-colab.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +68,7 @@ import {MatIconModule} from '@angular/material/icon';
     UpdateUserComponent,
     LandingComponent,
     LayoutComponent,
+    ListProyectColabComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +86,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatSnackBarModule,
     MatExpansionModule,
     MatIconModule,
+    MatTabsModule
   ],
   providers: [
     ListService,

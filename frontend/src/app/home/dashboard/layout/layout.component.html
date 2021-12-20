@@ -1,1 +1,35 @@
-<p>layout works!</p>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-1 navBar vh-100">
+          <ul class="nav flex-column">
+            <li class="nav-item p-3">
+              <img src="../../../../assets/MasterB-08.png" alt="" width="65px" align="center"
+              data-toggle="tooltip" data-placement="right" title="MasterBoard"
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="listProyect"><i class="fas fa-folder "
+                data-toggle="tooltip" data-placement="right" title="Mis Proyectos"
+                ></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="listProyectColab"><i class="fas fa-share-alt"
+                data-toggle="tooltip" data-placement="right" title="Proyectos compartidos"
+                ></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " routerLink="listProyect"><i class="fas fa-cog"
+                data-toggle="tooltip" data-placement="right" title="Configuracion"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " routerLink="listProyect"><i class="fas fa-sign-out-alt"
+                data-toggle="tooltip" data-placement="right" title="Salir"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-11">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
