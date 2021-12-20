@@ -48,6 +48,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { ListProyectColabComponent } from './components/proyect/list-proyect-colab/list-proyect-colab.component';
 
 import { AuthGuard } from './guard/auth.guard';
+import { AddColaboratorComponent } from './components/proyect/add-colaborator/add-colaborator.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +71,7 @@ import { AuthGuard } from './guard/auth.guard';
     LandingComponent,
     LayoutComponent,
     ListProyectColabComponent,
+    AddColaboratorComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,8 @@ import { LoginComponent } from './home/login/login.component';
 import { RegisterComponent } from './home/register/register.component';
 
 import { AuthGuard } from './guard/auth.guard';
+import { UpdateProyectComponent } from './components/proyect/update-proyect/update-proyect.component';
+import { AddColaboratorComponent } from './components/proyect/add-colaborator/add-colaborator.component';
 const routes: Routes = [
   { path: '', component: LandingComponent,
   pathMatch: 'full',},
@@ -24,6 +26,13 @@ const routes: Routes = [
         path: 'listProyect',
         component: ListProyectComponent,
         canActivate: [AuthGuard],
+        
+      },
+      {
+         path: 'listProyect/addColaborator/:_id',
+            component:  AddColaboratorComponent,
+            canActivate: [AuthGuard],
+        
       },
       {
         path: 'listProyectColab',
