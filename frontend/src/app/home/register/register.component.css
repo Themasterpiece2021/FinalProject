@@ -1,0 +1,17 @@
+
+  .login{
+    background-color: #1031a7;
+
+}
+.loginForm{
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.title {
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}  

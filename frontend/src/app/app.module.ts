@@ -29,8 +29,24 @@ import {ProyectsService} from './services/proyects.service';
 import {RoleService} from './services/role.service';
 import {TaskService} from './services/task.service';
 import {UserService} from './services/user.service';
+
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatTabsModule} from '@angular/material/tabs'
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatIconModule} from '@angular/material/icon';
+
+import { ListProyectColabComponent } from './components/proyect/list-proyect-colab/list-proyect-colab.component';
 
 @NgModule({
   declarations: [
@@ -53,11 +69,25 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     UpdateUserComponent,
     LandingComponent,
     LayoutComponent,
-    HomeComponent,
+    ListProyectColabComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatInputModule,
+    MatSnackBarModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatTabsModule
   ],
   providers: [
     ListService,
