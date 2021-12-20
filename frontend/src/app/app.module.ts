@@ -48,6 +48,7 @@ import {MatIconModule} from '@angular/material/icon';
 
 import { ListProyectColabComponent } from './components/proyect/list-proyect-colab/list-proyect-colab.component';
 
+import { AuthGuard } from './guard/auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -95,6 +96,7 @@ import { ListProyectColabComponent } from './components/proyect/list-proyect-col
     RoleService,
     TaskService,
     UserService,
+    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

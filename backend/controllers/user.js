@@ -211,6 +211,7 @@ const login = async (req, res) => {
   } catch (e) {
     return res.status(400).send({ message: "Login error" });
   }
+  
 };
 
 export default {
