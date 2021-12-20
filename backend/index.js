@@ -7,6 +7,7 @@ import role from "./routes/role.js";
 import user from "./routes/user.js";
 import list from "./routes/list.js";
 import task from "./routes/task.js";
+import mail from "./routes/mail.js";
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use("/api/user", user);
 app.use("/api/list", list);
 app.use("/api/task", task);
 app.use("/api/proyect", proyect)
+app.use("/api/mail",mail)
 
 
 

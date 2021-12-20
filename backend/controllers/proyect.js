@@ -1,5 +1,9 @@
 import proyect from "../models/proyect.js";
+import mail from "./mail.js";
 
+/**
+ * el array con el ultimo colaborador añadido
+ */
 const addCollaborators = async (req, res) => {
   let array = [];
   if (!req.body.email)
@@ -9,6 +13,7 @@ const addCollaborators = async (req, res) => {
     return res.status(400).send({ message: "User no registered" });
   } else {
     array.append(findCollaborators._id);
+    mail.sendCollaboratorsMail(req.body.email,findCollaborators.name);
     return res.status(200).send({ array });
   }
 };
@@ -23,7 +28,9 @@ const listCollaborators = async (req,res) =>{
    }
  };
 
-
+/**
+ *Este metodo recibe el array listo para ser tratado y actualizado en el proyecto de la BD
+ **/
 const updateCollaborators = async (req, res) => {
   let arrayColab = this.addCollaborators();
 
