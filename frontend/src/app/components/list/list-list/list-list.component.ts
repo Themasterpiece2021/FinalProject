@@ -19,7 +19,7 @@ export class ListListComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   durationInSeconds: number = 2;
-  idProyecto: any
+  idProyecto: any;
   constructor(private rutaActiva: ActivatedRoute,private _listService: ListService,
     private _snackBar: MatSnackBar) {
 this.listData={};

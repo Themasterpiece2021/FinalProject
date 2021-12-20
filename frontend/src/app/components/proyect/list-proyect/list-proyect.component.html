@@ -15,18 +15,24 @@
       <th scope="col">Nombre</th>
       <th scope="col">Descripcion</th>
       <th scope="col">Fecha</th>
+      <th scope="col">Opciones</th> 
     </tr>
   </thead>
   <tbody>
     <tr
       *ngFor="let proyect of proyectData"
       hideToggle="false"
-      class="clickable-row"
-      routerLink="listList/{{ proyect._id }}"
     >
-      <th>{{ proyect.name }}</th>
+      <th><a routerLink="listList/{{ proyect._id }}">{{ proyect.name }}</a></th>
       <td>{{ proyect.description }}</td>
       <td>{{ proyect.registerDate }}</td>
+      <td class="">
+      <a><i class="fa fa-edit"></i></a>
+      <span class="spacer"></span>
+      <a><i class="fa fa-trash-alt"></i></a> 
+      <span class="spacer"></span>
+      <a routerLink="addColaborator/{{proyect._id}}"><i class="fas fa-user-plus"></i></a>
+    </td>
     </tr>
   </tbody>
 </table>

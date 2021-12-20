@@ -1,40 +1,36 @@
 import proyect from "../models/proyect.js";
+import user from "../models/user.js"
 
 const addCollaborators = async (req, res) => {
-  let array = [];
+  
   if (!req.body.email)
     return res.status(400).send({ message: "Incomplete data" });
-  const findCollaborators = await proyect.findOne({ email: req.body.email });
+  const findCollaborators = await user.findOne({ email: req.body.email });
   if (!findCollaborators) {
     return res.status(400).send({ message: "User no registered" });
   } else {
-    array.append(findCollaborators._id);
-    return res.status(200).send({ array });
+    const collaboratorsadd = await proyect.findByIdAndUpdate(req.params["_id"], {
+      $push: { 'arrayCollaborators': findCollaborators._id }
+    });
+    return res.status(200).send({ collaboratorsadd });
   }
 };
 
 const listCollaborators = async (req,res) =>{
- for (const key in this.addCollaborators()) {
-   const collaboratorList = await proyect.findOne({ _id: key})
-   const collaboratorEmail = collaboratorList.email;
-   return (!collaboratorEmail)
-   ? res.status(400).send({message:"Collaborators List void"})
-   : res.status(200).send({collaboratorEmail})
+const findCollaborators = await proyect.findOne({ _id: req.params._id });
+let arrayColab=[];
+if(!findCollaborators){
+  return res.status(400).send({ message: "proyect no fount"})
+}else{
+ for (const key of findCollaborators.arrayCollaborators) {
+
+   const collaboratorList = await user.findOne({ _id: key})
+   arrayColab.push(collaboratorList.email)
    }
+   return arrayColab.length === 0
+   ? res.status(400).send({message:"Collaborators List void"})
+   : res.status(200).send({arrayColab})}
  };
-
-
-const updateCollaborators = async (req, res) => {
-  let arrayColab = this.addCollaborators();
-
-  const collaboratorsUpdate = proyect.findByIdAndUpdate(req.params["_id"], {
-    arrayCollaborators: arrayColab,
-  });
-
-  return !collaboratorsUpdate
-    ? res.status(400).send({ message: "Proyect no exist" })
-    : res.status(200).send({ collaboratorsUpdate });
-};
 
 const saveProyect = async (req, res) => {
   if (!req.body.name || !req.body.description)
@@ -94,7 +90,6 @@ export default {
   listProyectColab,
   updateProyect,
   deleteProyect,
-  updateCollaborators,
   addCollaborators,
   listCollaborators
 };
