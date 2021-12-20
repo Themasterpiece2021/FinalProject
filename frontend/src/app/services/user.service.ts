@@ -22,4 +22,13 @@ export class UserService {
   registerUser(user: any) {
     return this._http.post<any>(this.env + 'user/registerUser', user);
   }
+
+  loggedIn() {
+    return !!localStorage.getItem('token');
+  }
+
+  logout(){
+    localStorage.removeItem('token');
+    this._router.navigate(['/login']);
+  }
 }
