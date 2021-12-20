@@ -23,7 +23,8 @@ export class ListProyectComponent implements OnInit {
   constructor(
     private _proyectService: ProyectsService,
     private _router: Router,
-    private _snackBar: MatSnackBar) {
+    private _snackBar: MatSnackBar,
+    public _userService: UserService) {
 
       this.proyectData = {};
       this.registerDataProyect={}
