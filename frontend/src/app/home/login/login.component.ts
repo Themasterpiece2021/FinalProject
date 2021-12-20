@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
   login() {
     if (!this.loginData.email || !this.loginData.password) {
       this.message = 'failed process: incomplete data';
@@ -35,6 +36,8 @@ export class LoginComponent implements OnInit {
         next: (v) => {
           localStorage.setItem('token', v.token);
           this._router.navigate(['/dashboard/listProyect']);
+          this.getRole(this.loginData.email);
+          this.loginData = {};
         },
         error: (e) => {
           console.log(e);
@@ -43,6 +46,18 @@ export class LoginComponent implements OnInit {
         },
       });
     }
+  }
+  getRole(email: string) {
+    this._userService.getRole(email).subscribe({
+      next: (v) => {
+        localStorage.setItem('role', v.userRole);
+      },
+      error: (e) => {
+        this.message = e.error.message;
+        this.openSnackBarError();
+      },
+      complete: () => console.info('complete'),
+    });
   }
 
   openSnackBarError() {
