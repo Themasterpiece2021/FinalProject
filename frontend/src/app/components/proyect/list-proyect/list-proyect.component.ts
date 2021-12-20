@@ -6,6 +6,8 @@ import {
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import { UserService } from 'src/app/services/user.service';
+
 @Component({
   selector: 'app-list-proyect',
   templateUrl: './list-proyect.component.html',
@@ -22,6 +24,7 @@ export class ListProyectComponent implements OnInit {
     private _proyectService: ProyectsService,
     private _router: Router,
     private _snackBar: MatSnackBar) {
+
       this.proyectData = {};
       this.registerDataProyect={}
      }

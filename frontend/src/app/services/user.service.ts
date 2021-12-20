@@ -22,4 +22,15 @@ export class UserService {
   registerUser(user: any) {
     return this._http.post<any>(this.env + 'user/registerUser', user);
   }
+  getRole(email: string) {
+    return this._http.get<any>(this.env + 'user/getRole/' + email);
+  }
+  loggedIn() {
+    return !!localStorage.getItem('token');
+  }
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    this._router.navigate(['/']);
+  }
 }

@@ -9,28 +9,31 @@ import { LandingComponent } from './home/landing/landing/landing.component';
 import { LoginComponent } from './home/login/login.component';
 import { RegisterComponent } from './home/register/register.component';
 
+import { AuthGuard } from './guard/auth.guard';
 const routes: Routes = [
-  { path: '', component: LandingComponent },
+  { path: '', component: LandingComponent,
+  pathMatch: 'full',},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   {
     path: 'dashboard',
     component: LayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'listProyect',
         component: ListProyectComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'listProyectColab',
         component: ListProyectColabComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'listProyect/listList/:_id',
         component: ListListComponent,
-        children: [
-          { path: '', component: ListTaskComponent },
-        ],
+        children: [{ path: '', component: ListTaskComponent }],
       },
     ],
   },

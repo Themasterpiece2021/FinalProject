@@ -9,21 +9,23 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="listProyect"><i class="fas fa-folder "
+              <a class="nav-link" *ngIf="_userService.loggedIn()" routerLink="listProyect" ><i class="fas fa-folder "
                 data-toggle="tooltip" data-placement="right" title="Mis Proyectos"
                 ></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="listProyectColab"><i class="fas fa-share-alt"
+              <a class="nav-link" *ngIf="_userService.loggedIn()" routerLink="listProyectColab" ><i class="fas fa-share-alt"
                 data-toggle="tooltip" data-placement="right" title="Proyectos compartidos"
                 ></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " routerLink="listProyect"><i class="fas fa-cog"
+              <a class="nav-link " *ngIf="_userService.loggedIn()" routerLink="listProyect" ><i class="fas fa-cog"
                 data-toggle="tooltip" data-placement="right" title="Configuracion"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " routerLink="listProyect"><i class="fas fa-sign-out-alt"
+              <a class="nav-link " *ngIf="_userService.loggedIn()" 
+          mat-button
+          (click)="_userService.logout()"><i class="fas fa-sign-out-alt"
                 data-toggle="tooltip" data-placement="right" title="Salir"></i></a>
             </li>
           </ul>
