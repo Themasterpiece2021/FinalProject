@@ -5,8 +5,9 @@ import { ListProyectColabComponent } from './components/proyect/list-proyect-col
 import { ListProyectComponent } from './components/proyect/list-proyect/list-proyect.component';
 import { ListTaskComponent } from './components/task/list-task/list-task.component';
 import { LayoutComponent } from './home/dashboard/layout/layout.component';
-import { LandingComponent } from './home/landing/landing/landing.component';
+import { HomeComponent } from './home/dashboard/home/home.component';
 import { LoginComponent } from './home/login/login.component';
+import { LandingComponent } from './home/landing/landing/landing.component';
 import { RegisterComponent } from './home/register/register.component';
 
 import { AuthGuard } from './guard/auth.guard';
@@ -38,7 +39,6 @@ const routes: Routes = [
     ],
   },
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
