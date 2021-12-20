@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProyectsService} from '../../../services/proyects.service';
+import { Router } from '@angular/router';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -13,6 +14,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./list-proyect.component.css']
 })
 export class ListProyectComponent implements OnInit {
+  registerDataProyect: any;
   proyectData: any;
   message: string = '';
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
@@ -20,9 +22,11 @@ export class ListProyectComponent implements OnInit {
   durationInSeconds: number = 2;
   constructor(
     private _proyectService: ProyectsService,
-    private _snackBar: MatSnackBar,
-    public _userService: UserService) {
+    private _router: Router,
+    private _snackBar: MatSnackBar) {
+
       this.proyectData = {};
+      this.registerDataProyect={}
      }
 
   ngOnInit(): void {
@@ -36,6 +40,32 @@ export class ListProyectComponent implements OnInit {
       },
     });
 
+  }
+  saveProyect(){
+    if (
+      !this.registerDataProyect.name ||
+      !this.registerDataProyect.description  
+    ) {
+      this.message = 'failed process: incomplete data ';
+      this.openSnackBarError();
+    }else{
+      this._proyectService.saveProyect(this.registerDataProyect).subscribe({
+        next:(v) => {
+          this.ngOnInit();
+          this.clean();
+          this.message = "Successful Proyect registration"
+          this.openSnackBarSuccesFull();
+        },
+        error: (e) => {
+          this.message = e.error.message;
+          this.openSnackBarError();
+        }
+      });
+    }
+  }
+  clean(){
+    this.registerDataProyect.name=''
+    this.registerDataProyect.description=''
   }
  openSnackBarSuccesFull() {
     this._snackBar.open(this.message, 'X', {

@@ -1,20 +1,91 @@
-<table class="table table-hover"  *ngIf="_userService.loggedIn()">
-    <thead class="thead-dark ">
-      <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Descripcion</th>
-        <th scope="col">Fecha</th>
-        
-      </tr>
-    </thead>
-    <tbody>
-        
-      <tr *ngFor="let proyect of proyectData" hideToggle="false" class="clickable-row"  routerLink='listList/{{proyect._id}}'>
-        <th>{{proyect.name}}</th>
-        <td>{{proyect.description}}</td>
-        <td>{{proyect.registerDate}}</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
+
+<div class="add">
+  <button
+    type="button"
+    class="btn btn-primary"
+    data-toggle="modal"
+    data-target="#exampleModal"
+  >
+    <i class="fas fa-plus"></i>
+  </button>
+</div>
+<table class="table table-hover" *ngIf="_userService.loggedIn()">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Fecha</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      *ngFor="let proyect of proyectData"
+      hideToggle="false"
+      class="clickable-row"
+      routerLink="listList/{{ proyect._id }}"
+    >
+      <th>{{ proyect.name }}</th>
+      <td>{{ proyect.description }}</td>
+      <td>{{ proyect.registerDate }}</td>
+    </tr>
+  </tbody>
+</table>
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button
+          type="button"
+          class="close btn"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="text-white" >
+          <div class="form-group m-4">
+            <label for="exampleInputName">Name</label>
+            <input [(ngModel)]="registerDataProyect.name"
+            [ngModelOptions]="{standalone: true}"
+            type="text"
+              class="form-control"
+              id="exampleInputName"
+              aria-describedby="nameHelp"
+              placeholder="Enter name"
+              required
+            />
+          </div>
+          <div class="form-group m-4">
+            <label for="exampleInputDescription">Descripcion</label>
+            <input [(ngModel)]="registerDataProyect.description"
+            [ngModelOptions]="{standalone: true}"
+              type="text"
+              class="form-control"
+              id="exampleInputDescription"
+              aria-describedby="emailHelp"
+              placeholder="Descripcion"
+              required
+            />
+          </div>
+          <button type="submit" (click)="saveProyect()" class="btn btn-primary m-4" data-dismiss="modal">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $("#myModal").on("shown.bs.modal", function () {
+    $("#myInput").trigger("focus");
+  });
+</script>
+

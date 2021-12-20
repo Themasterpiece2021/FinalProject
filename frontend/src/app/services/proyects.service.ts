@@ -15,4 +15,7 @@ export class ProyectsService {
    listProyect(){
     return this._http.get<any>(this.env + 'proyect/listProyectAdmin');
    }
+   saveProyect(proyect: any){
+    return this._http.post<any>(this.env + 'proyect/saveProyect', proyect);
+   }
 }
