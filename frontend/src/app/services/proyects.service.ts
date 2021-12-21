@@ -18,10 +18,13 @@ export class ProyectsService {
    saveProyect(proyect: any){
     return this._http.post<any>(this.env + 'proyect/saveProyect', proyect);
    }
+<<<<<<< HEAD
    addCollaborators(idProyecto: any,proyect: any){
     return this._http.put<any>(this.env + 'proyect/updateCollaborators/'+idProyecto , proyect);
    }
    listCollaborators(idProyecto: string){
     return this._http.get<any>(this.env + 'proyect/listCollaborators/'+idProyecto );
    }
+=======
+>>>>>>> befbc84a2d0f067159b3bafa56eaa70f6325ea81
 }

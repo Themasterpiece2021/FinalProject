@@ -1,6 +1,10 @@
 import proyect from "../models/proyect.js";
 import user from "../models/user.js"
+import mail from "./mail.js";
 
+/**
+ * el array con el ultimo colaborador añadido
+ */
 const addCollaborators = async (req, res) => {
   
   if (!req.body.email)
