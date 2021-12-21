@@ -1,40 +1,43 @@
 import proyect from "../models/proyect.js";
-import user from "../models/user.js"
+import user from "../models/user.js";
 import mail from "./mail.js";
 
 /**
  * el array con el ultimo colaborador añadido
  */
 const addCollaborators = async (req, res) => {
-  
   if (!req.body.email)
     return res.status(400).send({ message: "Incomplete data" });
   const findCollaborators = await user.findOne({ email: req.body.email });
   if (!findCollaborators) {
     return res.status(400).send({ message: "User no registered" });
   } else {
-    const collaboratorsadd = await proyect.findByIdAndUpdate(req.params["_id"], {
-      $push: { 'arrayCollaborators': findCollaborators._id }
-    });
+    const collaboratorsadd = await proyect.findByIdAndUpdate(
+      req.params["_id"],
+      {
+        $push: { arrayCollaborators: findCollaborators._id },
+      }
+    );
+    mail.sendCollaboratorsMail(findCollaborators.email, collaboratorsadd.name);
     return res.status(200).send({ collaboratorsadd });
   }
 };
 
-const listCollaborators = async (req,res) =>{
-const findCollaborators = await proyect.findOne({ _id: req.params._id });
-let arrayColab=[];
-if(!findCollaborators){
-  return res.status(400).send({ message: "proyect no fount"})
-}else{
- for (const key of findCollaborators.arrayCollaborators) {
-
-   const collaboratorList = await user.findOne({ _id: key})
-   arrayColab.push(collaboratorList.email)
-   }
-   return arrayColab.length === 0
-   ? res.status(400).send({message:"Collaborators List void"})
-   : res.status(200).send({arrayColab})}
- };
+const listCollaborators = async (req, res) => {
+  const findCollaborators = await proyect.findOne({ _id: req.params._id });
+  let arrayColab = [];
+  if (!findCollaborators) {
+    return res.status(400).send({ message: "proyect no fount" });
+  } else {
+    for (const key of findCollaborators.arrayCollaborators) {
+      const collaboratorList = await user.findOne({ _id: key });
+      arrayColab.push(collaboratorList.email);
+    }
+    return arrayColab.length === 0
+      ? res.status(400).send({ message: "Collaborators List void" })
+      : res.status(200).send({ arrayColab });
+  }
+};
 
 const saveProyect = async (req, res) => {
   if (!req.body.name || !req.body.description)
@@ -73,7 +76,7 @@ const updateProyect = async (req, res) => {
     return res.status(400).send({ message: "Incomplete data" });
 
   const proyectUpdate = await proyect.findByIdAndUpdate(req.body._id, {
-    name: req.body.name
+    name: req.body.name,
   });
 
   return !proyectUpdate
@@ -95,5 +98,5 @@ export default {
   updateProyect,
   deleteProyect,
   addCollaborators,
-  listCollaborators
+  listCollaborators,
 };

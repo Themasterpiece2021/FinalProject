@@ -65,7 +65,7 @@ const sendCollaboratorsMail = async (email, proyectName) => {
       from: "Remitente", // sender address
       to: `${email}`, // list of receivers
       subject: `Bienvenido al proyecto  ${proyectName}`, // Subject line
-      text: "Usted ha sido asignado como colaborador ", // plain text body,
+      html: ` <h1>Usted ha sido asignado como colaborador al proyecto  ${proyectName} </h1>`, // plain text body,
     },
     (err, info) => {
       if (err) res.status(200).send({ success: false, error: err });
