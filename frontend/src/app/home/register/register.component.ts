@@ -57,6 +57,7 @@ export class RegisterComponent implements OnInit {
       });
     }
   }
+  
   openSnackBarSuccesFull() {
     this._snackBar.open(this.message, 'X', {
       horizontalPosition: this.horizontalPosition,
