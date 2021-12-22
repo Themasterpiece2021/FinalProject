@@ -103,4 +103,11 @@ const deleteTask = async (req, res) => {
  }
 };
 
-export default { saveTask, saveTaskImg, listTask, updateTask, deleteTask };
+const findTask = async (req,res) => {
+  let taskFind = await task.findById({_id: req.params['_id']})
+  return !taskFind
+    ? res.status(400).send({ message: "Task not found" })
+    : res.status(200).send({ taskFind });
+}
+
+export default { saveTask, saveTaskImg, listTask, updateTask, deleteTask, findTask };
