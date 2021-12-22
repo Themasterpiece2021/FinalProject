@@ -15,4 +15,16 @@ export class ListService {
     return this._http.get<any>(this.env + 'list/listList/'+ _id);
    }
   
+
+   
+   saveList(idProyecto: any,list: any){
+    return this._http.post<any>(this.env + 'list/saveList/'+idProyecto, list);
+   }
+   
+   deleteList(list: any) {
+    return this._http.delete<any>(this.env + 'list/deleteList/' + list._id);
+  }
+
+  
+
 }
