@@ -75,12 +75,23 @@ const listProyectAdmin = async (req, res) => {
 };
 
 const listProyectColab = async (req, res) => {
-  const ProyectListColab = await proyect.find({
-    arrayCollaborators: req.user._id,
-  });
-  return ProyectListColab.length === 0
-    ? res.status(400).send({ message: "You have no assigned Proyect" })
-    : res.status(200).send({ ProyectListColab });
+  const proyectos = await proyect.find();
+  const idUsuario = req.user._id;
+  let arrayProyectosColab = [];
+  for (var i = 0; i < proyectos.length; i++) {
+    let object = proyectos[i];
+    let arrayC = object.arrayCollaborators;
+    let idProC = object._id;
+    for (const key of arrayC) {
+      if (idUsuario == key + "") {
+        const proyectColab = await proyect.find({_id: idProC})
+        arrayProyectosColab.push(proyectColab[0]);
+      }
+    }
+  }
+  return arrayProyectosColab.length === 0
+  ? res.status(400).send({ message: "No proyect" })
+  : res.status(200).send({ arrayProyectosColab });
 };
 
 const updateProyect = async (req, res) => {
