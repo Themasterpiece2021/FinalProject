@@ -15,13 +15,13 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-
 app.use("/api/role", role);
 app.use("/api/user", user);
 app.use("/api/list", list);
 app.use("/api/task", task);
 app.use("/api/proyect", proyect)
 app.use("/api/mail",mail)
+app.use("/uploads", express.static("uploads"));
 
 
 

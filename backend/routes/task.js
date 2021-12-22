@@ -10,6 +10,7 @@ const router = express.Router();
 router.post("/saveTask/:_id",auth, task.saveTask);
 router.post("/saveTaskImg",auth, mult, formatFile, task.saveTaskImg);
 router.get("/listTask/:_id",auth,  task.listTask);
+router.get("/findTask/:_id",auth,  task.findTask);
 router.put("/updateTask",auth, task.updateTask);
 router.delete("/deleteTask/:_id",auth, task.deleteTask);
 

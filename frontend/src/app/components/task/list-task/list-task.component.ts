@@ -13,6 +13,7 @@ import {
 })
 export class ListTaskComponent implements OnInit {
   @Input() idList:any;
+  taskDetail:any;
   list: any;
   taskData: any;
   message: string = '';
@@ -24,6 +25,7 @@ export class ListTaskComponent implements OnInit {
     private _snackBar: MatSnackBar
   ) {
     this.taskData={};
+    this.taskDetail={}
    }
 
   ngOnInit(): void {
@@ -37,6 +39,49 @@ export class ListTaskComponent implements OnInit {
       },
     });
   }
+
+  deleteTask(id:any){
+    this._taskService.deleteTask(id).subscribe({
+      next: (v) => {
+        this.ngOnInit();
+        this.message = 'Task Deleted';
+        this.openSnackBarSuccesFull();
+      },
+      error: (e) => {
+        this.message = e.error.message;
+        this.openSnackBarError();
+      },
+    })
+  }
+
+  updateTask(task:any,status:any){
+      let tempStatus = task.taskStatus;
+      task.taskStatus = status;
+      this._taskService.updateTask(task).subscribe({
+        next: (v) => {
+          task.taskStatus = status;
+          this.ngOnInit();
+        },
+        error: (e) => {
+          task.taskStatus = tempStatus;
+          this.message = e.error.message;
+          this.openSnackBarError();
+        },
+      });
+  }
+
+  getTask(id:any){
+    this._taskService.getTask(id).subscribe({
+      next: (v) => {
+        this.taskDetail = v.taskFind;
+      },
+      error: (e) => {
+        this.message = e.error.message;
+        this.openSnackBarError();
+      },
+    })
+  }
+
   openSnackBarSuccesFull() {
     this._snackBar.open(this.message, 'X', {
       horizontalPosition: this.horizontalPosition,
