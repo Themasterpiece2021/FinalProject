@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {TaskService} from '../../../services/task.service';
 import {
   MatSnackBar,
@@ -12,6 +12,7 @@ import {
   styleUrls: ['./list-task.component.css']
 })
 export class ListTaskComponent implements OnInit {
+  @Input() idList:any;
   list: any;
   taskData: any;
   message: string = '';
@@ -23,11 +24,10 @@ export class ListTaskComponent implements OnInit {
     private _snackBar: MatSnackBar
   ) {
     this.taskData={};
-    this.list=localStorage.getItem('list');
    }
 
   ngOnInit(): void {
-    /*this._taskService.listTask(this.list).subscribe({
+    this._taskService.listTask(this.idList).subscribe({
       next: (v) => {
         this.taskData = v.taskList;
       },
@@ -35,7 +35,7 @@ export class ListTaskComponent implements OnInit {
         this.message = e.error.message;
         this.openSnackBarError();
       },
-    });*/
+    });
   }
   openSnackBarSuccesFull() {
     this._snackBar.open(this.message, 'X', {

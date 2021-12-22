@@ -14,4 +14,8 @@ export class TaskService {
   listTask(_id: string){
     return this._http.get<any>(this.env + 'task/listTask/'+ _id);
    }
+   
+  saveTask(data: any){
+    return this._http.post<any>(this.env + 'task/saveTaskImg', data);
+   }
 }

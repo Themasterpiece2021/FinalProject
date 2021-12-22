@@ -51,7 +51,7 @@ const saveTaskImg = async (req, res) => {
     description: req.body.description,
     taskStatus: "to-do",
     imageUrl: imageUrl,
-    listId: req.params['_id'],
+    listId: req.body.listId,
   });
 
   const result = await taskSchema.save();
