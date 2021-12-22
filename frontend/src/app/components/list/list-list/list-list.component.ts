@@ -15,6 +15,7 @@ import {
 export class ListListComponent implements OnInit {
   listId: any;
   listData: any;
+  registerDataList: any;
   message: string = '';
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
@@ -22,7 +23,8 @@ export class ListListComponent implements OnInit {
   idProyecto: any;
   constructor(private rutaActiva: ActivatedRoute,private _listService: ListService,
     private _snackBar: MatSnackBar) {
-this.listData={};
+     this.listData={};
+     this.registerDataList={};
    }
 
   ngOnInit(): void {
@@ -37,6 +39,56 @@ this.listData={};
       },
     });
   }
+
+  deleteList(list: any) {
+    this._listService.deleteList(list).subscribe({
+      next: (v) => {
+        let index = this.listData.indexOf(list);
+        if (index > -1) {
+          this.listData.splice(index, 1);
+          this.message = v.message;
+          this.openSnackBarSuccesFull();
+        }
+      },
+      error: (e) => {
+        this.message = e.error.message;
+        this.openSnackBarError();
+      },
+    });
+  }
+
+  saveList(){
+    this.idProyecto= this.rutaActiva.snapshot.params["_id"];
+    
+    if (
+      !this.registerDataList.name ||
+      !this.registerDataList.description  
+    ) {
+      this.message = 'failed process: incomplete data ';
+      this.openSnackBarError();
+    }else{
+      this._listService.saveList(this.idProyecto,this.registerDataList).subscribe({
+        next:(v) => {
+          this.ngOnInit();
+          this.clean();
+          this.message = "Successful List registration"
+          this.openSnackBarSuccesFull();
+        },
+        error: (e) => {
+          this.message = e.error.message;
+          this.openSnackBarError();
+        }
+      });
+    }
+  }
+  
+  
+
+  clean(){
+    this.registerDataList.name=''
+    this.registerDataList.description=''
+  }
+
     openSnackBarSuccesFull() {
       this._snackBar.open(this.message, 'X', {
         horizontalPosition: this.horizontalPosition,
