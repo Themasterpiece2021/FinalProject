@@ -14,16 +14,32 @@ export class UserService {
   login(user: any) {
     return this._http.post<any>(this.env + 'user/login', user);
   }
+  findUser(_id: string) {
+    return this._http.get<any>(this.env + 'user/findUser/' + _id);
+  }
+  getUser() {
+    return this._http.get<any>(this.env + 'user/getUser');
+  }
+
 
   getToken() {
     return localStorage.getItem('token');
+  }
+  listUser(name: string) {
+    return this._http.get<any>(this.env + 'user/listUsers/' + name);
   }
 
   registerUser(user: any) {
     return this._http.post<any>(this.env + 'user/registerUser', user);
   }
+  updateUser(user: any) {
+    return this._http.put<any>(this.env + 'user/updateUser', user);
+  }
   getRole(email: string) {
     return this._http.get<any>(this.env + 'user/getRole/' + email);
+  }
+   isAdmin() {
+    return localStorage.getItem('role') === 'admin' ? true : false;
   }
   loggedIn() {
     return !!localStorage.getItem('token');

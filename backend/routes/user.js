@@ -10,8 +10,9 @@ router.post("/registerAdminUser", auth, admin, user.registerAdminUser);
 router.post("/login", user.login);
 router.get("/listUsers/:name?", user.listAllUser);
 router.get("/getRole/:email", auth, user.getUserRole);
-router.get("/findUser/:_id", auth, validId, admin, user.findUser);
-router.put("/updateUser", auth, admin, user.updateUser);
+router.get("/findUser/:_id", auth, validId, user.findUser);
+router.get("/getUser", auth, user.getUser);
+router.put("/updateUser", auth, user.updateUser);
 router.put("/deleteUser", auth, admin, user.deleteUser);
 
 export default router;
