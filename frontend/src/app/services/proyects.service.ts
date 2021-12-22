@@ -24,4 +24,7 @@ export class ProyectsService {
    listCollaborators(idProyecto: string){
     return this._http.get<any>(this.env + 'proyect/listCollaborators/'+idProyecto );
    }
+   listProyectColab(){
+    return this._http.get<any>(this.env + 'proyect/listProyectColab/' );
+   }
 }
