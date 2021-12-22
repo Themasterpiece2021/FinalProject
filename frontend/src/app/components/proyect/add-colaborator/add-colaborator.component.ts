@@ -55,6 +55,7 @@ export class AddColaboratorComponent implements OnInit {
           this.ngOnInit();
           this.message = "Successful add colaborator"
           this.openSnackBarSuccesFull();
+          this.updateData.email = ""
         },
         error: (e) => {
           this.message = e.error.message;
@@ -63,6 +64,11 @@ export class AddColaboratorComponent implements OnInit {
       });
     }
   }
+
+   deleteCollaborator () {
+
+  }
+
   openSnackBarSuccesFull() {
     this._snackBar.open(this.message, 'X', {
       horizontalPosition: this.horizontalPosition,
