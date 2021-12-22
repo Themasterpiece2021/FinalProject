@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute ,Router} from '@angular/router';
 import { ListService } from '../../../services/list.service';
 import {
   MatSnackBar,
@@ -24,7 +24,7 @@ export class ListListComponent implements OnInit {
   idProyecto: any;
 
   constructor(private rutaActiva: ActivatedRoute,private _listService: ListService,
-    private _snackBar: MatSnackBar) {
+    private _snackBar: MatSnackBar,public _router: Router) {
      this.listData={};
      this.registerDataList={};
    }
@@ -90,6 +90,14 @@ export class ListListComponent implements OnInit {
   clean(){
     this.registerDataList.name=''
     this.registerDataList.description=''
+  }
+
+  urlButton(){
+    let flag=false
+    if(this._router.url=="/dashboard/listProyect/listList/"+this.idProyecto){
+      flag= true
+    }
+    return flag
   }
 
     openSnackBarSuccesFull() {

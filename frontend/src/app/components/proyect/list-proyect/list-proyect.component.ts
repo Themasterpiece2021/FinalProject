@@ -68,6 +68,25 @@ export class ListProyectComponent implements OnInit {
     this.registerDataProyect.name=''
     this.registerDataProyect.description=''
   }
+  delete(proyect:any) {
+    this._proyectService.delete(proyect).subscribe({
+      next: (v) => {
+        let index= this.proyectData.indexOf(proyect);
+        if(index > -1 ){
+          this.proyectData.splice(index,1)
+          this.message=v.message;
+          this.openSnackBarSuccesFull();
+        }
+        
+      },
+      error: (e) => {
+        this.message = e.error.message;
+        this.openSnackBarError();
+
+      },
+    });
+  }
+
  openSnackBarSuccesFull() {
     this._snackBar.open(this.message, 'X', {
       horizontalPosition: this.horizontalPosition,

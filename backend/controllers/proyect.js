@@ -108,7 +108,7 @@ const updateProyect = async (req, res) => {
 };
 
 const deleteProyect = async (req, res) => {
-  const proyectDelete = await proyect.deleteMany(req.params._id);
+  const proyectDelete = await proyect.findByIdAndDelete(req.params._id);
   return !proyectDelete
     ? res.status(400).send({ message: "Proyect not found" })
     : res.status(200).send({ message: "Proyect deleted" });

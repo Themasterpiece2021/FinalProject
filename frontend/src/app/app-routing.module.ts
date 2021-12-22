@@ -45,6 +45,10 @@ const routes: Routes = [
         component: ListListComponent
       },
       {
+        path: 'listProyectColab/listList/:_id',
+        component: ListListComponent
+      },
+      {
         path: 'listProyect/listList/:_id/saveTask',
         component: SaveTaskComponent,
         canActivate: [AuthGuard],
