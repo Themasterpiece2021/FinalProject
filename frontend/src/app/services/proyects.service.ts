@@ -27,4 +27,8 @@ export class ProyectsService {
    listProyectColab(){
     return this._http.get<any>(this.env + 'proyect/listProyectColab/' );
    }
+   delete(proyect: any){
+    return this._http.delete<any>(this.env + 'proyect/deleteProyect/'+ proyect._id);
+
+   }
 }

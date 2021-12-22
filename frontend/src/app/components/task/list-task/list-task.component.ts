@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute ,Router} from '@angular/router';
 import {TaskService} from '../../../services/task.service';
 import {
   MatSnackBar,
@@ -20,22 +21,26 @@ export class ListTaskComponent implements OnInit {
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   durationInSeconds: number = 2;
+  idProyecto: any;
   constructor(
     private _taskService: TaskService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    public _router: Router,
+    private rutaActiva: ActivatedRoute
   ) {
     this.taskData={};
     this.taskDetail={}
    }
 
   ngOnInit(): void {
+    this.idProyecto = this.rutaActiva.snapshot.params['_id'];
     this._taskService.listTask(this.idList).subscribe({
       next: (v) => {
         this.taskData = v.taskList;
       },
       error: (e) => {
         this.message = e.error.message;
-        this.openSnackBarError();
+        
       },
     });
   }
@@ -81,7 +86,14 @@ export class ListTaskComponent implements OnInit {
       },
     })
   }
-
+  urlButton(){
+    let flag=false
+    
+    if(this._router.url=="/dashboard/listProyect/listList/"+this.idProyecto){
+      flag= true
+    }
+    return flag
+  }
   openSnackBarSuccesFull() {
     this._snackBar.open(this.message, 'X', {
       horizontalPosition: this.horizontalPosition,

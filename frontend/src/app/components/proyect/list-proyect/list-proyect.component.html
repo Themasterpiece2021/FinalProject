@@ -2,7 +2,7 @@
 <div class="add">
   <button
     type="button"
-    class="btn btn-primary"
+    class="btn btn-secondary"
     data-toggle="modal"
     data-target="#exampleModal"
   >
@@ -27,11 +27,11 @@
       <td>{{ proyect.description }}</td>
       <td>{{ proyect.registerDate }}</td>
       <td class="">
-      <a><i class="fa fa-edit"></i></a>
+      <a class="btn btn-primary m-1"><i class="fa fa-edit"></i></a>
       <span class="spacer"></span>
-      <a><i class="fa fa-trash-alt"></i></a> 
+      <a class="btn btn-danger m-1" (click)="delete(proyect)"><i class="fa fa-trash-alt"></i></a> 
       <span class="spacer"></span>
-      <a routerLink="addColaborator/{{proyect._id}}"><i class="fas fa-user-plus"></i></a>
+      <a class="btn btn-success m-1"routerLink="addColaborator/{{proyect._id}}"><i class="fas fa-user-plus"></i></a>
     </td>
     </tr>
   </tbody>
