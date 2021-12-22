@@ -1,1 +1,37 @@
-<p>save-task works!</p>
+<form>
+    <div class="form-group m-4">
+      <label for="exampleInputName">Name</label>
+      <input [(ngModel)]="registerTaskData.name"
+      [ngModelOptions]="{standalone: true}"
+      type="text"
+        class="form-control"
+        id="exampleInputName"
+        aria-describedby="nameHelp"
+        placeholder="Task name"
+        required
+      />
+    </div>
+    <div class="form-group m-4">
+      <label for="exampleInputDescription">Descripcion</label>
+      <input [(ngModel)]="registerTaskData.description"
+      [ngModelOptions]="{standalone: true}"
+        type="text"
+        class="form-control"
+        id="exampleInputDescription"
+        aria-describedby="emailHelp"
+        placeholder="Description"
+        required
+      />
+    </div>
+    <div class="form-group m-4">
+      <select [(ngModel)]="registerTaskData.listId" class="form-select" [ngModelOptions]="{standalone: true}">
+        <option disabled>Select a List</option>
+        <option  *ngFor="let list of listData" [ngValue]="list._id">{{list.name}}</option>
+      </select>
+    </div>
+    <div class="form-group m-4">
+      <input class="form-control" type="file" (change)="uploadImg($event)">
+    </div>
+    <button type="submit" (click)="saveTask()" class="btn btn-primary m-4" data-dismiss="modal">Enviar</button> 
+    {{registerTaskData.name}}{{registerTaskData.description}}{{registerTaskData.listId}}
+  </form>
