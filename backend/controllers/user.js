@@ -122,6 +122,13 @@ const getUserRole = async (req, res) => {
   return res.status(200).send({ userRole });
 };
 
+const getUser = async (req, res)=>{
+ const userGet = await user.findOne({_id: req.user._id})
+ return !userGet
+ ? res.status(400).send({ message: "No search results" })
+ : res.status(200).send({ userGet });
+}
+
 const updateUser = async (req, res) => {
   if (!req.body.name || !req.body.email || !req.body.roleId)
     return res.status(400).send({ message: "Incomplete data" });
@@ -224,4 +231,5 @@ export default {
   deleteUser,
   login,
   getUserRole,
+  getUser,
 };

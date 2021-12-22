@@ -9,6 +9,7 @@ import { HomeComponent } from './home/dashboard/home/home.component';
 import { LoginComponent } from './home/login/login.component';
 import { LandingComponent } from './home/landing/landing/landing.component';
 import { RegisterComponent } from './home/register/register.component';
+import { UpdateUserComponent } from './components/user/update-user/update-user.component';
 
 import { AuthGuard } from './guard/auth.guard';
 import { UpdateProyectComponent } from './components/proyect/update-proyect/update-proyect.component';
@@ -47,6 +48,12 @@ const routes: Routes = [
         path: 'listProyect/listList/:_id/saveTask',
         component: SaveTaskComponent,
         canActivate: [AuthGuard],
+      },
+      {
+        path: 'updateUser',
+        component: UpdateUserComponent,
+        canActivate: [AuthGuard],
+        
       },
     ],
   },
