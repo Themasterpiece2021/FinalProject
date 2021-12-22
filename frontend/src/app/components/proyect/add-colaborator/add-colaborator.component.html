@@ -14,7 +14,7 @@
             [ngModelOptions]="{standalone: true}"
           />
         </div>
-        <button type="submit" class="btn btn-primary" (click)="addColaborator()">Submit</button>
+        <button type="submit" class="btn btn-primary" (click)="addColaborator()">Añadir Colaborador</button>
       </form>
     </div>
     <div class="col 6">
@@ -30,7 +30,7 @@
           hideToggle="false">
             <td>{{colab}}</td>
             <td class="">
-              <a><i class="fa fa-trash-alt"></i></a>
+              <a (click)="deleteCollaborator()"><i class="fa fa-trash-alt"></i></a>
             </td>
           </tr>
         </tbody>

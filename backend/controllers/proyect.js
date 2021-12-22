@@ -5,23 +5,35 @@ import mail from "./mail.js";
 /**
  * el array con el ultimo colaborador añadido
  */
-const addCollaborators = async (req, res) => {
+ const addCollaborators = async (req, res) => {
   if (!req.body.email)
     return res.status(400).send({ message: "Incomplete data" });
   const findCollaborators = await user.findOne({ email: req.body.email });
   if (!findCollaborators) {
     return res.status(400).send({ message: "User no registered" });
   } else {
+    const array = await proyect.findById(req.params["_id"]);
+    const arrayC = array.arrayCollaborators;
+    for (var i = 0; i < arrayC.length; i++) {
+      const valor = arrayC[i]+"";
+      if (findCollaborators._id == valor)
+        return res.status(400).send({ message: "User already exist in the list" });
+    }
     const collaboratorsadd = await proyect.findByIdAndUpdate(
       req.params["_id"],
       {
         $push: { arrayCollaborators: findCollaborators._id },
       }
     );
+
     mail.sendCollaboratorsMail(findCollaborators.email, collaboratorsadd.name);
     return res.status(200).send({ collaboratorsadd });
   }
 };
+
+const deleteCollaborators = async (req, res) => {
+
+}
 
 const listCollaborators = async (req, res) => {
   const findCollaborators = await proyect.findOne({ _id: req.params._id });
