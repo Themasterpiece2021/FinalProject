@@ -19,31 +19,9 @@
             [ngModelOptions]="{standalone: true}"
           />
         </div>
-        <button type="submit" class="btn btn-primary" (click)="addColaborator()">Añadir Colaborador</button>
-      </form>
+        <button type="submit" class="btn btn-primary mt-2" (click)="addColaborator()">Añadir Colaborador</button>
+  
     </div>
-    <div class="col 6">
-      <table class="table table-hover" >
-        <thead class="thead-dark">
-          <tr>
-            
-            <th scope="col">Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let colab of proyectColab"
-          hideToggle="false">
-            <td>{{colab}}</td>
-            <td class="">
-              <a (click)="deleteCollaborator()"><i class="fa fa-trash-alt"></i></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-<<<<<<< HEAD
-  </div>
-=======
   </form>
 </div>
 </div>
@@ -63,6 +41,4 @@
     </tbody>
   </table>
 </div>
-</div>
->>>>>>> 0fa2ccc (branch para heroku)
-</div>
+

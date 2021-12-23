@@ -12,10 +12,12 @@ const upload = async (req, res, next) => {
             type !== "image/jpg" &&
             type !== "image/jpeg" &&
             type !== "image/gif" &&
-            type !=  "image/pdf"
+            type !=  "image/pdf" &&
+            type !== "image/docx"&&
+            type !== "image/xlsx"
           ) {
             return res.status(400).send({
-              message: "Invalid image format: only .png .jpg. jpeg .gif",
+              message: "Invalid file format: only .png .jpg. jpeg .gif .pdf .docx .xlsx",
             });
           } else {
             next();
