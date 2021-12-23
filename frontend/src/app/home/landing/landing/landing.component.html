@@ -16,7 +16,7 @@
           class="dropdown-item text-white"
           *ngIf="!_userService.loggedIn()"
           routerLink="login"
-          >Login</a
+          >Iniciar Sesion</a
         >
       </li>
       <li>
@@ -24,7 +24,7 @@
           class="dropdown-item text-white"
           *ngIf="!_userService.loggedIn()"
           routerLink="register"
-          >Sign up</a
+          >Registrarse</a
         >
       </li>
       <li>
@@ -32,7 +32,7 @@
           class="dropdown-item text-white"
           *ngIf="_userService.loggedIn()"
           routerLink="dashboard"
-          >Dashboard</a
+          >Inicio</a
         >
       </li>
       <li>
@@ -40,14 +40,14 @@
           class="dropdown-item text-white"
           *ngIf="_userService.loggedIn()"
           (click)="_userService.logout()"
-          >Logout</a
+          >Cerrar Sesion</a
         >
       </li>
     </ul>
   </div>
 </nav>
-<div class="container">
-  <div class="row">
+<div class="container gifMaster">
+  <div class="row ">
     <div class="col-12" align="center">
       <img src="../../../../assets/assetLogoIndex.gif" alt="" width="650px" />
     </div>

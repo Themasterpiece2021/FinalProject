@@ -48,9 +48,12 @@ export class ListTaskComponent implements OnInit {
   deleteTask(id:any){
     this._taskService.deleteTask(id).subscribe({
       next: (v) => {
-        this.ngOnInit();
-        this.message = 'Task Deleted';
-        this.openSnackBarSuccesFull();
+        let index= this.taskData.indexOf(id);
+        if(index > -1 ){
+          this.taskData.splice(index,1)
+          this.message=v.message;
+          this.openSnackBarSuccesFull();
+        }
       },
       error: (e) => {
         this.message = e.error.message;

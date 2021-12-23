@@ -61,6 +61,10 @@ const routes: Routes = [
       },
     ],
   },
+  { path: '**', component: LandingComponent,
+  pathMatch: 'full',
+  canActivate: [AuthGuard],
+},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
