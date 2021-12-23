@@ -1,10 +1,16 @@
-<div class="container">
+
+<div class="container colab">
   <div class="row">
     <div class="col 6">
-      <form>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input
+<div class="card">
+  <div class="card-header card-primary">
+    <h6 class="card-title ">Agregar Colaborador</h6>
+  </div>
+  <form>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input
             type="email"
             class="form-control"
             id="exampleInputEmail1"
@@ -13,28 +19,32 @@
             [(ngModel)]="updateData.email"
             [ngModelOptions]="{standalone: true}"
           />
-        </div>
-        <button type="submit" class="btn btn-primary" (click)="addColaborator()">Añadir Colaborador</button>
-      </form>
+      </div>
     </div>
-    <div class="col 6">
-      <table class="table table-hover" >
-        <thead class="thead-dark">
-          <tr>
-            
-            <th scope="col">Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let colab of proyectColab"
-          hideToggle="false">
-            <td>{{colab}}</td>
-            <td class="">
-              <a (click)="deleteCollaborator()"><i class="fa fa-trash-alt"></i></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="card-footer">
+      <button type="submit" class="btn btn-primary spacer" (click)="addColaborator()">Añadir Colaborador</button>
     </div>
-  </div>
+  </form>
+</div>
+</div>
+<div class="col 6">
+  <table class="table table-hover" >
+    <thead class="thead-dark">
+      <tr>
+        
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let colab of proyectColab"
+      hideToggle="false">
+        <td>{{colab}}</td>
+        <td class="">
+          <a (click)="deleteCollaborator()"><i class="fa fa-trash-alt"></i></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
 </div>

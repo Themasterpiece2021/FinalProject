@@ -1,7 +1,44 @@
 .spacer{
     padding-right: 5%;
-}´
+}
+
 .my-modal-wrapper {
     position: absolute;
     z-index: 1060;
   }
+
+  .margin-boton{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+.close{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.offcanvas-margin{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.table {
+	background: var(--backgroundColor);
+	border-radius: 10px;
+}
+
+.card{
+    box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+    margin-bottom: 1rem;
+}
+
+.card-primary{
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.margin-botton{
+    margin-left: 10px;
+    margin-right: 10px;
+}
