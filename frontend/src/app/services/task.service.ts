@@ -19,8 +19,8 @@ export class TaskService {
     return this._http.post<any>(this.env + 'task/saveTaskImg', data);
   }
 
-  deleteTask(_id: any) {
-    return this._http.delete<any>(this.env + 'task/deleteTask/' + _id);
+  deleteTask(id: any) {
+    return this._http.delete<any>(this.env + 'task/deleteTask/' + id._id);
   }
 
   updateTask(task: any) {
