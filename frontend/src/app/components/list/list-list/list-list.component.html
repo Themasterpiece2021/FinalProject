@@ -1,5 +1,8 @@
-
 <div class="add">
+
+  <a type="button" class="btn btn-outline-primary m-1" routerLink="saveTask" *ngIf="urlButton()" >
+    <b>Agregar Tarea +</b>
+  </a>
   <button
     type="button"
     class="btn btn-outline-primary m-1"
@@ -7,113 +10,81 @@
     data-target="#exampleModal"
     *ngIf="urlButton()"
   >
-    <b>Agregar Lista + </b>
+  <b>Agregar Lista + </b>
+    
   </button>
-  <a
-    type="button"
-    class="btn btn-outline-primary m-1"
-    routerLink="saveTask"
-    *ngIf="urlButton()"
-  >
-    <b>Agregar Tarea +</b>
-  </a>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <mat-tab-group>
+        <mat-tab *ngFor="let list of listData" label="{{ list.name }}">
+          <button color="primary" (click)="deleteList(list)" *ngIf="urlButton()" class="btn btn-danger"><i class="fa fa-trash-alt m-1"></i>Borrar lista</button>
+          <app-list-task [idList]="list._id"></app-list-task>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
 </div>
 
-<div class="card card-success">
-  <div class="card-header card-primary">
-    <h6 class="card-title">My list</h6>
-  </div>
-  <div class="card-body">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <mat-tab-group>
-            <mat-tab *ngFor="let list of listData" label="{{ list.name }}">
-              <button
-                color="primary"
-                (click)="deleteList(list)"
-                *ngIf="urlButton()"
-                class="btn btn-danger"
-              >
-                <i class="fa fa-trash-alt m-1"></i>Borrar lista
-              </button>
-              <app-list-task [idList]="list._id"></app-list-task>
-            </mat-tab>
-          </mat-tab-group>
-        </div>
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Lista De Tareas</h5>
+        <button
+          type="button"
+          class="close btn"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </div>
-    
-    <div
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">
-              Agregar Lista De Tareas
-            </h5>
-            <button
-              type="button"
-              class="close btn"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
+      <div class="modal-body">
+        <form  >
+          <div class="form-group m-4">
+            <label for="exampleInputName">Name</label>
+            <input [(ngModel)]="registerDataList.name"
+            [ngModelOptions]="{standalone: true}"
+            type="text"
+              class="form-control"
+              id="exampleInputName"
+              aria-describedby="nameHelp"
+              placeholder="Enter name"
+              required
+            />
           </div>
-          
-          <div class="modal-body">
-            <form>
-              <div class="form-group m-4">
-                <label for="exampleInputName">Name</label>
-                <input
-                  [(ngModel)]="registerDataList.name"
-                  [ngModelOptions]="{ standalone: true }"
-                  type="text"
-                  class="form-control"
-                  id="exampleInputName"
-                  aria-describedby="nameHelp"
-                  placeholder="Enter name"
-                  required
-                />
-              </div>
-              <div class="form-group m-4">
-                <label for="exampleInputDescription">Descripcion</label>
-                <input
-                  [(ngModel)]="registerDataList.description"
-                  [ngModelOptions]="{ standalone: true }"
-                  type="text"
-                  class="form-control"
-                  id="exampleInputDescription"
-                  aria-describedby="emailHelp"
-                  placeholder="Descripcion"
-                  required
-                />
-              </div>
-              <button
-                type="submit"
-                (click)="saveList()"
-                class="btn btn-primary m-4"
-                data-dismiss="modal"
-              >
-                Enviar
-              </button>
-            </form>
+          <div class="form-group m-4">
+            <label for="exampleInputDescription">Descripcion</label>
+            <input [(ngModel)]="registerDataList.description"
+            [ngModelOptions]="{standalone: true}"
+              type="text"
+              class="form-control"
+              id="exampleInputDescription"
+              aria-describedby="emailHelp"
+              placeholder="Descripcion"
+              required
+            />
           </div>
-        </div>
+          <button type="submit" (click)="saveList()" class="btn btn-primary m-4" data-dismiss="modal">Enviar</button>
+         
+        </form>
       </div>
     </div>
   </div>
-  <!-- /.card-body -->
 </div>
 <script>
   $("#myModal").on("shown.bs.modal", function () {
     $("#myInput").trigger("focus");
   });
 </script>
+
+

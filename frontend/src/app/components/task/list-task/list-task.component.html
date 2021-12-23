@@ -28,7 +28,6 @@
       </td>
       <td>
         <button
-        class="btn btn-primary"
           (click)="getTask(task._id)"
           data-bs-toggle="offcanvas"
           [attr.data-bs-target]="'#offcanvasRight-' + task._id"
@@ -36,7 +35,7 @@
           <i class="fas fa-list-ul"></i>
         </button>
         <span class="spacer"></span>
-        <a class="btn btn-danger" (click)="deleteTask(task._id)" *ngIf="urlButton()"><i class="fa fa-trash-alt"></i></a>
+        <a (click)="deleteTask(task._id)" *ngIf="urlButton()"><i class="fa fa-trash-alt"></i></a>
         <span class="spacer"></span>
       </td>
     </tr>
@@ -49,72 +48,66 @@
   [id]="'offcanvasRight-' + taskDetail._id"
   aria-labelledby="offcanvasRightLabel"
 >
-<button
-        type="button"
-        class="btn-close text-reset close"
-        data-bs-dismiss="offcanvas"
-        aria-label="Close"
-      ></button>
-  <div class="offcanvas-margin">
-    <div class="card card-success">
-      <div class="card-header card-primary">
-        <h5 id="offcanvasRightLabel">{{ taskDetail.name }}</h5>
-      </div>
-      <div class="card-body">
-    </div>
-    <div class="offcanvas-body">
-      <button
-        type="button"
-        class="btn btn-outline-danger"
-        (click)="updateTask(taskDetail,'to-do')"
-        *ngIf="taskDetail.taskStatus != 'to-do'"
-      >
-        To-do
-      </button>
-      <button
-        type="button"
-        class="btn btn-danger"
-        *ngIf="taskDetail.taskStatus == 'to-do'"
-      >
-        To-do
-      </button>
-      <button
-        type="button"
-        class="btn btn-outline-warning"
-        (click)="updateTask(taskDetail,'in-progress')"
-        *ngIf="taskDetail.taskStatus != 'in-progress'"
-      >
-        In Progress
-      </button>
-      <button
-        type="button"
-        class="btn btn-warning"
-        *ngIf="taskDetail.taskStatus == 'in-progress'"
-      >
-        In Progress
-      </button>
-      <button
-        type="button"
-        class="btn btn-outline-success"
-        (click)="updateTask(taskDetail,'done')"
-        *ngIf="taskDetail.taskStatus != 'done'"
-      >
-        Done
-      </button>
-      <button
-        type="button"
-        class="btn btn-success"
-        *ngIf="taskDetail.taskStatus == 'done'"
-      >
-        Done
-      </button>
-      <br><br>
-      <b>Descripción:</b>&nbsp;{{ taskDetail.description }}
-      <br>
-      <div *ngIf="taskDetail.imageUrl != ''">
-        <a [href]="taskDetail.imageUrl" target="_blank" download>Descargar Archivo</a>
-      </div>
-      </div>
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel">{{ taskDetail.name }}</h5>
+    <button
+      type="button"
+      class="btn-close text-reset"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <button
+      type="button"
+      class="btn btn-outline-danger"
+      (click)="updateTask(taskDetail,'to-do')"
+      *ngIf="taskDetail.taskStatus != 'to-do'"
+    >
+      To-do
+    </button>
+    <button
+      type="button"
+      class="btn btn-danger"
+      *ngIf="taskDetail.taskStatus == 'to-do'"
+    >
+      To-do
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-warning"
+      (click)="updateTask(taskDetail,'in-progress')"
+      *ngIf="taskDetail.taskStatus != 'in-progress'"
+    >
+      In Progress
+    </button>
+    <button
+      type="button"
+      class="btn btn-warning"
+      *ngIf="taskDetail.taskStatus == 'in-progress'"
+    >
+      In Progress
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-success"
+      (click)="updateTask(taskDetail,'done')"
+      *ngIf="taskDetail.taskStatus != 'done'"
+    >
+      Done
+    </button>
+    <button
+      type="button"
+      class="btn btn-success"
+      *ngIf="taskDetail.taskStatus == 'done'"
+    >
+      Done
+    </button>
+    <br>
+    <b>Descripción:</b>&nbsp;{{ taskDetail.description }}
+    <br>
+    <div *ngIf="taskDetail.imageUrl != ''">
+      <a [href]="taskDetail.imageUrl" target="_blank" download>Descargar Archivo</a>
     </div>
   </div>
 </div>

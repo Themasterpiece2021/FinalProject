@@ -1,70 +1,37 @@
-<section class="margin-style">
-  <div class="card">
-    <div class="card-header card-primary">
-      <h6 class="card-title">Save Task</h6>
+<form>
+    <div class="form-group m-4">
+      <label for="exampleInputName">Name</label>
+      <input [(ngModel)]="registerTaskData.name"
+      [ngModelOptions]="{standalone: true}"
+      type="text"
+        class="form-control"
+        id="exampleInputName"
+        aria-describedby="nameHelp"
+        placeholder="Task name"
+        required
+      />
     </div>
-    <form>
-      <div class="card-body">
-        <div class="form-group">
-          <label for="exampleInputName"><b>Name</b></label>
-          <input
-            [(ngModel)]="registerTaskData.name"
-            [ngModelOptions]="{ standalone: true }"
-            type="text"
-            class="form-control"
-            id="exampleInputName"
-            aria-describedby="nameHelp"
-            placeholder="Task name"
-            required
-          />
-          <br />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputDescription"><b>Description</b></label>
-          <input
-            [(ngModel)]="registerTaskData.description"
-            [ngModelOptions]="{ standalone: true }"
-            type="text"
-            class="form-control"
-            id="exampleInputDescription"
-            aria-describedby="emailHelp"
-            placeholder="Description"
-            required
-          /><br />
-        </div>
-        <div class="form-group">
-          <label for="exampleInputDescription"><b>Select a List</b></label>
-          <select
-            [(ngModel)]="registerTaskData.listId"
-            class="form-select"
-            [ngModelOptions]="{ standalone: true }"
-          >
-            <option disabled><b>Select a List</b></option>
-            <option *ngFor="let list of listData" [ngValue]="list._id">
-              {{ list.name }}
-            </option>
-          </select>
-        </div>
-        <br />
-        <div class="form-group">
-          <input
-            class="form-control"
-            type="file"
-            (change)="uploadImg($event)"
-          />
-        </div>
-      </div>
-
-      <div class="card-footer">
-        <button
-          type="submit"
-          (click)="saveTask()"
-          class="btn btn-primary"
-          data-dismiss="modal"
-        >
-          Save
-        </button>
-      </div>
-    </form>
-  </div>
-</section>
+    <div class="form-group m-4">
+      <label for="exampleInputDescription">Descripcion</label>
+      <input [(ngModel)]="registerTaskData.description"
+      [ngModelOptions]="{standalone: true}"
+        type="text"
+        class="form-control"
+        id="exampleInputDescription"
+        aria-describedby="emailHelp"
+        placeholder="Description"
+        required
+      />
+    </div>
+    <div class="form-group m-4">
+      <select [(ngModel)]="registerTaskData.listId" class="form-select" [ngModelOptions]="{standalone: true}">
+        <option disabled>Select a List</option>
+        <option  *ngFor="let list of listData" [ngValue]="list._id">{{list.name}}</option>
+      </select>
+    </div>
+    <div class="form-group m-4">
+      <input class="form-control" type="file" (change)="uploadImg($event)">
+    </div>
+    <button type="submit" (click)="saveTask()" class="btn btn-primary m-4" data-dismiss="modal">Enviar</button> 
+    {{registerTaskData.name}}{{registerTaskData.description}}{{registerTaskData.listId}}
+  </form>
