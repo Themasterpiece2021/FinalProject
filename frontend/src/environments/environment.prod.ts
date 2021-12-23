@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  APP_URL: 'https://masterboard-masterpiece.herokuapp.com/api/',
 };

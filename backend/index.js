@@ -1,5 +1,6 @@
-import express from "express";
+import express, { application } from "express";
 import cors from "cors";
+import path from "path";
 import db from "./db/db.js";
 import dotenv from "dotenv";
 import proyect from "./routes/proyect.js";
@@ -22,6 +23,11 @@ app.use("/api/task", task);
 app.use("/api/proyect", proyect)
 app.use("/api/mail",mail)
 app.use("/uploads", express.static("uploads"));
+app.use(express.static("public"));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, "public/index.html"));
+})
 
 
 
